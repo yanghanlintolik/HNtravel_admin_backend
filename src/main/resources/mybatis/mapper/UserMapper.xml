@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hainantravel.lin.mapper.UserMapper">
+
+    <select id="queryUserList"  resultType="User">
+    select * from user limit #{page},#{size}
+    </select>
+
+    <select id="queryTotalUsers"  resultType="int">
+    select count(*) from user
+    </select>
+
+    <select id ="queryUserByName" resultType="User">
+        select * from user where user_name like concat("%", #{user_name},"%")
+    </select>
+
+    <select id ="queryUserById" resultType="User">
+        select * from user where id like concat("%", #{id},"%")
+    </select>
+
+    <insert id="addUser" parameterType="User">
+        insert into user (user_name,user_label,user_sex,user_birthday,user_address,user_tell,user_profession) values (#{user_name},#{user_label},#{user_sex},#{user_birthday},#{user_address},#{user_tell},#{user_profession})
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+        update user set user_name=#{user_name},user_label=#{user_label} ,user_sex=#{user_sex},user_birthday=#{user_birthday},user_address=#{user_address},user_tell=#{user_tell},user_profession=#{user_profession} where id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id = #{id}
+    </delete>
+
+</mapper>

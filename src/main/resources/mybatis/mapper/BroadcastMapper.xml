@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hainantravel.lin.mapper.BroadcastMapper">
+
+    <select id="queryBroadcast"  resultType="Broadcast">
+    select * from broadcast
+    </select>
+
+    <insert id="saveBroadcast" parameterType="Broadcast">
+        insert into broadcast (release_time,broadcast_content,broadcast_type) values (#{release_time},#{broadcast_content},#{broadcast_type})
+    </insert>
+
+</mapper>

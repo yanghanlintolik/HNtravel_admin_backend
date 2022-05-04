@@ -1,0 +1,56 @@
+#端口配置
+server:
+  port: 8081
+#数据库配置
+spring:
+  #mySQL配置
+  datasource:
+    username: root
+#    password: D125859712 # 腾讯云环境
+    #password: Dd125859712* #本机环境
+    password: root123456 # 104外网环境
+    #?serverTimezone=UTC解决时区的报错
+    url: jdbc:mysql://114.55.143.130:31023/smart_city?serverTimezone=UTC&useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #mongoDB配置
+  data:
+    mongodb:
+      #地址
+      host: localhost
+      #端口
+      port: 27017
+      #数据库名对应mysql的数据库名
+      database: scenic_admin
+      #角色密码+
+      username: scenic_root
+      password: Dd125859712*
+#mybatis配置
+mybatis:
+  # model的包
+  type-aliases-package: com.hainantravel.lin.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+#config配置
+config:
+  #jwt配置
+  jwt:
+    # 加密密钥
+    secret: hfqry19481r39lsaavbdakv
+    # token有效时长
+    expire: 3600
+    # header 名称
+    header: token
+
+#上传文件配置jar打包方式不支持将文件动态写入文件，这时需要通过映射的方式将文件上传到映射某一个文件夹，通过映射获取文件，在页面显示。
+#    配置本地上传地址或者服务器地址，springboot项目可以通过映射获取文件，从而页面显示
+#    注意：这里配置的地址一定要加一个"/"在最后面！！！！
+upload:
+  #实际存放路径：
+  #服务器路径（运行环境）
+  filePath: "/travel/upload/img/"
+  #本地路径（开发环境）
+#  filePath: "E:/scenic_admin/upload/images/"
+  #返回前端前置路径：
+  #运行环境
+  url: "http://8.131.61.116/upload/img/"
+  #开发环境：
+#  url: "http://localhost:8080/upload/"

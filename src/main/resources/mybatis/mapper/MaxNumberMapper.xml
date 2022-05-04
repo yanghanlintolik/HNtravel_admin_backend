@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hainantravel.lin.mapper.MaxNumberMapper">
+
+    <select id="getAllNumber"  resultType="Map">
+    select * from maxnumber
+    </select>
+
+    <update id="modifyNumber" parameterType="MaxNumber" >
+        update maxnumber set value=#{value} where id = #{id}
+    </update>
+</mapper>
